@@ -1,0 +1,499 @@
+Code: vi 1
+echo "Calendar of current month:"
+cal
+echo "Today's date:"
+date
+echo "Users currently logged in:"
+who
+echo "Hello World"
+echo "Calculation of:"
+bc
+
+
+2] Write a shell program to execute the following commands:
+i] Display present working directory
+ii] Display today's date and time in 2 different lines.
+iii] Display your terminal address.
+iv] Display login name of user currently logged in.
+v] Display all processes of the users.
+vi] Display all files and directories in current working directory.
+
+Code: vi 2
+echo "Present working directory is "
+pwd
+echo "Today's date is"
+date +%D
+echo "Today's time is "
+date +%r
+echo "Terminal address:"
+tty
+echo "Name of user currently logged in:"
+who am i
+echo "Process of the user"
+ps
+echo "Files and Directories in current working directory"
+ls –l
+
+
+3] Write a shell script to initialize values in 2 variables and perform addition, subtraction,
+multiplication, division, modulo and print the appropriate result.
+
+Code: vi 3
+var1=10
+var2=5
+echo "Sum:`expr $var1 + $var2`"
+echo "Difference:`expr $var1 - $var2`"
+echo "Product:`expr $var1 \* $var2`"
+echo "Division:`expr $var1 / $var2`"
+echo "Modulus:`expr $var1 % $var2`"
+
+
+4] Write a shell script to read values from the user and perform +, -,*,/ and %.
+(Read <variable name>)
+
+Code: vi 4
+read a
+read b
+echo "Sum: `expr $a + $b`"
+echo "Difference: `expr $a - $b`"
+echo "Product: `expr $a \* $b`"
+echo "Division: `expr $a / $b`"
+echo "Modulus: `expr $a % $b`"
+
+
+5] Write a shell script to read input from the user and check whether it is greater than 10 or not.
+
+Code: vi 5
+echo "Enter a number:"
+read a
+if [ $a -gt 10 ]
+then
+echo "$a is greater than 10"
+else
+echo "$a is less than 10"
+fi
+
+
+6] Write a shell script to accept a number from the user and check whether it is even or odd.
+
+Code: vi 6
+echo "Enter a number:"
+read a
+if [ `expr $a % 2` -eq 0 ]
+then
+echo "Even number."
+else
+echo "Odd number."
+fi
+
+7] Write a shell script to check whether the number is divisible by 3 or not.
+
+Code: vi 7
+echo "Enter a number :"
+read a
+if [ `expr $a % 3` -eq 0 ]
+then
+echo "Divisible by 3."
+else
+echo "Not divisible by 3."
+fi
+
+
+8] Write a shell script to read number from the user and check whether number is divisible by 3 or 7.
+
+Code: vi 8
+echo "Enter a number :"
+read a
+if [ `expr $a % 3` -eq 0 ]
+then
+echo "Divisible by 3."
+elif [ `expr $a % 7` -eq 0 ]
+then
+echo "Divisible by 7."
+else
+echo "Not divisible by 3 or 7."
+fi
+
+9] Write a shell script to read number from the user and check whether it is divisible by 3 and 7 or only by 3 or only by 7 or not by both.
+
+Code: vi 9
+echo "Enter a number :"
+read a
+if [ `expr $a % 3` -eq 0 ]
+then
+echo "Divisible by 3."
+else
+echo "Not divisible by 3."
+fi
+if [ `expr $a % 7` -eq 0 ]
+then
+echo "Divisible by 7."
+else
+echo "Not Divisible by 7."
+fi
+
+
+10] Write a shell script to read 3 numbers from the user and find the largest using nested if else.
+
+Code: vi 10
+echo "Enter 3 numbers :"
+read a
+read b
+read c
+if [ $a -gt $b ] and [ $a -gt $c ]
+then
+echo "$a is greater than $b and $c."
+elif [ $b -gt $a ] and [ $b -gt $c ]
+then
+echo "$b is greater than $a and $c."
+else
+echo “$c is greater than $a and $b.”
+fi
+
+
+11] Write a shell script to read marks of 5 subjects and find the total, percentage and grade of student.
+
+Code: vi 11
+echo "Enter 5 subject marks :"
+read m1
+read m2
+read m3
+read m4
+read m5
+tot=`expr $m1+$m2+$m3+$m4+$m5|bc`
+per=`expr $tot/5|bc`
+echo "Total is $tot"
+echo "Percentage is $per"
+if [ $per -lt 35 ]
+then
+echo "Fail."
+elif [ $per -ge 35 -a $per -lt 45 ]
+then
+echo "Third class."
+elif [ $per -ge 45 -a $per -lt 60 ]
+then
+echo "Second class."
+else
+echo "First Class."
+fi
+
+
+12] Write a shell script to check whether the year entered is leap or not.
+
+Code: vi 13
+echo "Enter a year :"
+read year
+if [ `expr $year % 4` -eq 0 ]
+then
+echo "The entered year is leap year."
+else
+echo "The entered year is not a leap year."
+fi
+
+
+13] The basic salary of an employee is entered if the basic salary is less than or equal to 1500, hra=10%, da=90% of basic salary will be given to employee of the basic salary is greater than 1500 then hra=500 and da=90% will be given. Write a shell script to find gross salary.
+
+Code: vi 13
+echo "Enter basic salary:"
+read b
+if [ $b -le 1500 ]
+then
+hra=`echo 0.10\*$b|bc`
+da=`echo 0.90\*$b|bc`
+gs=`echo $b+$hra+$da|bc`
+echo "Gross Salary is $gs"
+else
+hra=500
+da=`echo 0.98\*$b|bc`
+gs=`echo $b+$hra+$da|bc`
+echo "Gross Salary is $gs"
+fi
+
+
+14] Write a shell script tor pint month name corresponding to month number.
+
+Code: vi 14
+echo "Enter the month number."
+read m
+case $m in
+1) echo Jan;;
+2) echo Feb;;
+3) echo Mar;;
+4) echo Apr;;
+5) echo May;;
+6) echo Jun;;
+7) echo Jul;;
+8) echo Aug;;
+9) echo Sep;;
+10) echo Oct;;
+11) echo Nov;;
+12) echo Dec;;
+*)echo "Please enter valid month number."
+esac
+
+
+15] Write a shell script to print weekday name corresponding to week number.
+
+Code: vi 15
+echo "Enter week number:"
+read m
+case $m in
+1) echo Sun;;
+2) echo Mon;;
+3) echo Tue;;
+4) echo Wed;;
+5) echo Thur;;
+6) echo Fri;;
+7) echo Sat;;
+*) echo "Please enter valid week number."
+esac
+
+
+16] Write a shell script to perform one of the following between 2 numbers : +, -, *, /, %, exit.
+
+Code: vi 16
+echo "Enter 1 for addition"
+echo "Enter 2 for subtraction"
+echo "Enter 3 for multiplication"
+echo "Enter 4 for division"
+echo "Enter 5 for modulus"
+read ch
+case $ch in
+1)echo "Enter 2 numbers :"
+read x
+read y
+add=`expr $x + $y`
+echo "Addition :$add";;
+2)echo "Enter 2 numbers :"
+read x
+read y
+sub=`expr $x - $y`
+echo "Subtraction :$sub";;
+3)echo "Enter 2 numbers :"
+read x
+read y
+mul=`expr $x \* $y`
+echo "Multiplication :$mul";;
+4)echo "Enter 2 numbers :"
+read x
+read y
+div=`expr $x / $y`
+echo "Division :$div";;
+5)echo "Enter 2 numbers :"
+read x
+read y
+mod=`expr $x % $y`
+echo "Modulus :$mod";;
+6)exit;;
+*)echo "Please enter valid choice"
+esac
+
+17] Write a shell script to read character from the user and check the type of character i.e. upper, lowercase, digit or a special symbol otherwise display appropriate message as 'You have entered more
+than 1 character'.
+
+Code: vi 17
+echo "Enter a character"
+read ch
+case $ch in
+[A-Z])
+echo "Uppercase";;
+[a-z])
+echo "Lowercase";;
+[0-9])
+echo "Numbers";;
+?)
+echo "Special character";;
+*)
+echo "You have entered more than 1 character"
+esac
+
+
+
+18] Write a shell script to enter color from the user and display user's favorite color.
+
+Code: vi 18
+echo "Enter a color:"
+read color
+case $color in
+[rR][eE][dD])echo "Your choice is RED color.";;
+[bB][lL][uU][eE])echo "Your choice is BLUE color.";;
+[pP][iI][nN][kK])echo "Your choice is PINK color";;
+*)
+echo "Please enter valid color."
+esac
+
+
+19] Write a shell script to read word from the user and check whether it is starting with the lowercase vowel letter or uppercase or ends with a digit or starts with digit or it is 3 letter word.
+
+Code: vi 19
+echo "Enter word :"
+read word
+case $word in
+[aeiou]*)
+echo "Your entered vowel is in lowercase.";;
+[AEIOU]*)
+echo "Your entered vowel is in UPPERCASE.";;
+[0-9]*)
+echo "Your entered word starting with a digit.";;
+*[0-9])
+echo "Your entered word ending with a digit.";;
+???)
+echo "You entered a 3 letter word";;
+esac
+
+
+20] Write a shell script to read a choice between A-E and do the following:
+a] display today's date
+b] display the calendar of the current year.
+c] display list of all users currently logged in
+d] perform some calculation
+e] exit
+
+Code: vi 20
+echo "Enter your choice"
+echo "a) Enter A to display today's date."
+echo "b) Enter B to display the calendar of current year. "
+echo "c) Enter C to list all users currently logged in."
+echo "d) Enter D to perform some calculations."
+echo "e) Enter E to exit."
+read ch
+case $ch in
+a)echo "Today's date"
+date;;
+b)echo "Current year calendar"
+cal;;
+c)echo "All users currently logged in"
+who;;
+d)echo "Calculation of"
+bc;;
+e)exit;;
+esac
+
+
+21] Write a shell script to read file name from user and find the type of the file whether it is .c or .out type file.
+
+Code: vi 21
+echo "Enter a file name:"
+read f
+case $f in
+*.c)
+echo "This is c type file.";;
+*.out)
+echo "This is out type file.";;
+*)
+echo "This is some other type.";;
+esac
+
+
+
+22] Write a shell script to read 2 strings and check whether the strings are identical. Print appropriate
+message.
+
+Code: vi 35
+echo "Enter line 1: "
+read m
+echo "Enter line 2: "
+read n
+if [ m == n ]
+then
+echo "identical"
+else
+echo "different"
+fi
+
+23] Write a shell script to read a string from command line argument and check whether its length is greater than or equal to 12. Print appropriate message.
+
+Code: vi 36
+str=$1
+len=${#str}
+if [ $len -ge 12 ]
+then
+echo "$1 string length is greater than 12."
+else
+echo "$1 string length is less than 12."
+fi
+
+
+24] Write a shell script to read a file name from the user and check whether it exists or not. If exists then check it is non-empty or not, if non-empty display the contents of the file and print appropriate message.
+
+Code: vi 37
+echo "Enter file name :"
+read f
+if [ -f$f ]
+then
+echo "$f file exists."
+x=`ls $f|wc -l`
+if [ $x -gt 0 ]
+then
+echo "$f file is not empty."
+echo "The content of $f is"
+cat $f
+else
+echo "$f is empty."
+fi
+else
+echo "$f does nor exists."
+fi
+
+25] Write a shell script to read a filename and check if it exists readable or writable. If yes allow the user to append the content in the file and print appropriate message.
+
+Code: vi 38
+echo "Enter file name :"
+read f
+if [ -f$f ]
+then
+echo "$f file exists."
+echo "The contents of $f :"
+cat $f
+if [ -w $f ]
+then
+echo "$f has write permission."
+echo "Now you can append."
+cat>>$f
+else
+echo "$f doesn't have permission."
+fi
+else
+echo "$f doesn't exists."
+fi
+
+
+26] Write a shell script to read file name from user and check whether the file name exists. If it is then read pattern from the user and check whether that pattern exists or not. If it is display lines containing this pattern otherwise display appropriate message.
+
+Code: vi 39
+echo "Enter file name :"
+read f
+if [ -f$f ]
+then
+echo "$f file exists."
+echo "Enter pattern :"
+read pat
+x=`grep -c $pat $f`
+if [ $x -gt 0 ]
+then
+echo "Pattern found."
+echo "Line containing $pat in $f are :"
+grep "$pat" $f
+else
+echo "Pattern not found."
+fi
+else
+echo "File does not exists."
+fivgbfm
+
+
+27] Write a shell script which receives 2 file names as argument and it should check whether 2 files contents are same or not. If they are then 2nd file should be deleted.
+
+Code: vi 40
+file1=$1
+file2=$2
+cmp $file1 $file2
+if [ `echo $?` -eq 0 ]
+then
+echo "$file1 and $file2 are same"
+echo "now deleting file2........."
+rm $file2
+echo "deletion successfully"
+else
+echo "2 files are not at all same"
+fi
